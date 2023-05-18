@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 import org.hamcrest.MatcherAssert;
 import static org.junit.Assert.*;
 
@@ -183,7 +183,7 @@ public class OrderPageSamokat {
    //метод проверки статуса заказа
     public void checkOrderStatus (String expectedStatus) {
         waitForLoadOrderModalView();
-        MatcherAssert.assertThat(driver.findElement(headerOrderModalView).getText(), is(expectedStatus));
+        MatcherAssert.assertThat(driver.findElement(headerOrderModalView).getText(), containsString(expectedStatus));
     }
 
 

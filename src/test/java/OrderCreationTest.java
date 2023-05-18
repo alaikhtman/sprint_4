@@ -19,7 +19,8 @@ public class OrderCreationTest {
 
     @Before
     public void startUp() {
-       WebDriverManager.chromedriver().setup();
+        WebDriverManager.chromedriver().setup();
+        //WebDriverManager.firefoxdriver().clearDriverCache().setup();
 
     }
 
@@ -58,7 +59,7 @@ public class OrderCreationTest {
     public static Object[][] createOrders() {
         return new Object[][]{
                 {"Алексендра", "Петрова", "Москва, ул.Ленина 7", 2, "+79046098780", "12.06.2024", 0, "black", "Хочу лететь как птица"},
-             //   {"Виталий", "Иванов", "Москва, ул.Кирова 7", 3, "+79046098980", "12.07.2024", 5, "grey", ""},
+                {"Виталий", "Иванов", "Москва, ул.Кирова 7", 3, "+79046098980", "12.07.2024", 5, "grey", ""},
 
         };
     }
@@ -67,7 +68,8 @@ public class OrderCreationTest {
     @Test
     public void checkOrderCreationWithUpperButton() {
 
-       driver = new ChromeDriver();
+        driver = new ChromeDriver();
+        //driver = new FirefoxDriver();
         driver.get("https://qa-scooter.praktikum-services.ru");
 
         MainPageSamokat mainPage = new MainPageSamokat(driver);
@@ -85,6 +87,7 @@ public class OrderCreationTest {
     public void checkOrderCreationWithLowerButton() {
 
         driver = new ChromeDriver();
+        //driver = new FirefoxDriver();
         driver.get("https://qa-scooter.praktikum-services.ru");
 
         MainPageSamokat mainPage = new MainPageSamokat(driver);

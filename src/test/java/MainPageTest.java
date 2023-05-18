@@ -23,6 +23,7 @@ public class MainPageTest {
 
     @Before
     public void startUp() {
+
         WebDriverManager.chromedriver().setup();
     }
 
