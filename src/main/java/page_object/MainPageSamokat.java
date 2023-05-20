@@ -1,4 +1,4 @@
-package pageObject;
+package page_object;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,8 +7,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MainPageSamokat {
     private WebDriver driver;
+
 
     //Кнопка заказать вверху
     private By upperOrderButton = By.className("Button_Button__ra12g");
@@ -19,6 +21,8 @@ public class MainPageSamokat {
     //Кнопка кук
     private By cookiesApprove = By.id("rcc-confirm-button");
 
+    //Текст в FAQ
+    private By importantTextField = By.xpath(".//*[@class='accordion__panel' and not(@hidden)]/p");
 
     public MainPageSamokat(WebDriver driver) {
         this.driver = driver;
@@ -49,7 +53,7 @@ public class MainPageSamokat {
         for (int i = 0; i < elements.size(); i++) {
             elements.get(i).click();
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", elements.get(i));
-            String textField = driver.findElement(By.xpath(".//*[@class='accordion__panel' and not(@hidden)]/p")).getText();
+            String textField = driver.findElement(importantTextField).getText();
             listOfTexts.add(textField);
         }
 

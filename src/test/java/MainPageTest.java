@@ -1,31 +1,16 @@
 
 import org.hamcrest.MatcherAssert;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import pageObject.MainPageSamokat;
+import page_object.MainPageSamokat;
 import org.junit.runners.Parameterized;
-
 import static org.hamcrest.CoreMatchers.is;
-
 import java.util.List;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 
 @RunWith(Parameterized.class)
-public class MainPageTest {
-
-    WebDriver driver;
-
-    @Before
-    public void startUp() {
-
-        WebDriverManager.chromedriver().setup();
-    }
+public class MainPageTest extends BaseTest {
 
     public int itemImportantQuestion;
     public String expectedText;
@@ -53,19 +38,11 @@ public class MainPageTest {
     @Test
     public void checkListImportantQuestions() {
 
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru");
-
         MainPageSamokat mainPage = new MainPageSamokat(driver);
-
-       List<String> listImportantQuestionTexts = mainPage.getTextFromImportantList();
-       MatcherAssert.assertThat(listImportantQuestionTexts.get(itemImportantQuestion), is(expectedText));
-
+        List<String> listImportantQuestionTexts = mainPage.getTextFromImportantList();
+        MatcherAssert.assertThat(listImportantQuestionTexts.get(itemImportantQuestion), is(expectedText));
 
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
+
 }

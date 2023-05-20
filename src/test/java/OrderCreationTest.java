@@ -1,28 +1,13 @@
 
 import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import pageObject.MainPageSamokat;
+import page_object.MainPageSamokat;
 import org.junit.runners.Parameterized;
-import pageObject.OrderPageSamokat;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import page_object.OrderPageSamokat;
 
 
 @RunWith(Parameterized.class)
-public class OrderCreationTest {
-
-    WebDriver driver;
-
-    @Before
-    public void startUp() {
-        WebDriverManager.chromedriver().setup();
-        //WebDriverManager.firefoxdriver().clearDriverCache().setup();
-
-    }
+public class OrderCreationTest extends BaseTest {
 
     public String name;
     public String lastName;
@@ -68,9 +53,6 @@ public class OrderCreationTest {
     @Test
     public void checkOrderCreationWithUpperButton() {
 
-        driver = new ChromeDriver();
-        //driver = new FirefoxDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru");
 
         MainPageSamokat mainPage = new MainPageSamokat(driver);
         mainPage.setCookiesApprove();
@@ -86,9 +68,6 @@ public class OrderCreationTest {
     @Test
     public void checkOrderCreationWithLowerButton() {
 
-        driver = new ChromeDriver();
-        //driver = new FirefoxDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru");
 
         MainPageSamokat mainPage = new MainPageSamokat(driver);
         mainPage.setCookiesApprove();
@@ -101,9 +80,5 @@ public class OrderCreationTest {
 
     }
 
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
 
 }
